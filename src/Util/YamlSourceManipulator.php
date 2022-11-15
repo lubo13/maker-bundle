@@ -50,10 +50,10 @@ class YamlSourceManipulator
     private $arrayFormatForDepths = [];
     private $arrayTypeForDepths = [];
 
-    public function __construct(string $contents)
+    public function __construct(string $contents, int $flags = 0)
     {
         $this->contents = $contents;
-        $this->currentData = Yaml::parse($contents);
+        $this->currentData = Yaml::parse($contents, $flags);
 
         if (!\is_array($this->currentData)) {
             throw new \InvalidArgumentException('Only YAML with a top-level array structure is supported');
